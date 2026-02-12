@@ -61,10 +61,24 @@
       color: #7b0f1a;
       font-weight: 600;
     }
+     .title-emoji {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      display: block;
+      animation: emoji-bounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+    }
+
+    @keyframes emoji-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
   </style>
 </head>
 <body>
   <main class="card">
+    <img src="emoji.png" alt="Love emoji" class="title-emoji">
     <h1 class="headline">Will You Be My Valentine?</h1>
     <p class="sub">Let your heart decide...</p>
     
