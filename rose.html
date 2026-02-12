@@ -13,8 +13,32 @@
     <a class="cta-link" href="index.html">← Back</a>
     
     <section class="gallery" aria-label="Photo gallery">
-        <video controls src="photos/WhatsApp Video 2026-02-08 at 9.16.00 PM.mp4" aria-label="Video message"></video>
+        <video id="heroVideo" controls src="video.mp4" aria-label="Video message" style="width:100%;height:auto;display:block;"></video>
     </section>
+
+    <script>
+    (function(){
+      var v = document.getElementById('heroVideo');
+      if(!v) return;
+      function enterFullscreen(){
+        if (v.requestFullscreen) {
+          v.requestFullscreen().catch(function(){});
+        } else if (v.webkitEnterFullscreen) {
+          v.webkitEnterFullscreen();
+        } else if (v.webkitRequestFullscreen) {
+          v.webkitRequestFullscreen();
+        } else if (v.mozRequestFullScreen) {
+          v.mozRequestFullScreen();
+        }
+      }
+      function onUserTap(e){
+        enterFullscreen();
+        v.play().catch(function(){});
+      }
+      v.addEventListener('click', onUserTap, {passive:true});
+      v.addEventListener('touchend', onUserTap, {passive:true});
+    })();
+    </script>
 
     <a class="cta-link" href="index.html">← Back</a>
   </main>
