@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .button-group {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 30px;
+      align-items: center;
+    }
+
+    .yes-btn, .no-btn {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(208, 0, 0, 0.32);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .yes-btn:hover {
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 10px 30px rgba(208, 0, 0, 0.45);
+    }
+
+    .no-btn {
+      background: linear-gradient(90deg, #ffa500, #ff6b6b);
+      position: relative;
+    }
+
+    .no-btn:hover {
+      transform: translate(
+        calc(sin(var(--angle)) * 80px),
+        calc(cos(var(--angle)) * 80px)
+      );
+      pointer-events: none;
+    }
+
+    .yes-btn.scaled {
+      transform: scale(1.6);
+      animation: pulse 0.5s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1.6); }
+      50% { transform: scale(1.7); }
+    }
+
+    .sub {
+      margin: 16px 0 24px;
+      color: #7b0f1a;
+      font-weight: 600;
+    }
+
+    .title-emoji {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      display: block;
+      animation: emoji-bounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+    }
+
+    @keyframes emoji-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="decor-hearts" aria-hidden="true">
+      <span class="heart dh1">❤</span>
+      <span class="heart dh2">❤</span>
+      <span class="heart dh3">❤</span>
+      <span class="heart dh4">❤</span>
+    </div>
+    
+    <img src="emoji.png" alt="Love emoji" class="title-emoji">
+    
+    <h1 class="headline">Will You Be My Valentine?</h1>
+    <p class="sub">Let your heart decide...</p>
+    
+    <div class="button-group">
+      <button class="yes-btn">💕 YES 💕</button>
+      <button class="no-btn">NO</button>
+    </div>
+  </main>
+
+  <script>
+    const noBtn = document.querySelector('.no-btn');
+    const yesBtn = document.querySelector('.yes-btn');
+    
+    noBtn.addEventListener('mouseenter', () => {
+      const randomX = Math.random() * 160 - 80;
+      const randomY = Math.random() * 160 - 80;
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      yesBtn.classList.add('scaled');
+    });
+    
+    noBtn.addEventListener('mouseleave', () => {
+      yesBtn.classList.remove('scaled');
+    });
+    
+    yesBtn.addEventListener('click', () => {
+      window.location.href = 'second.html';
+    });
+  </script>
+</body>
+</html>

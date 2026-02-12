@@ -1,0 +1,77 @@
+:root{
+  --bg1:#ff1f4b;
+  --bg2:#fff5f7;
+  --card:#ffffffff;
+  --accent1:#d00000;
+  --accent2:#ff2d55;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,system-ui,Arial;color:#333}
+body{
+  background: radial-gradient(circle at 10% 20%, #ffebee 0%, transparent 20%),
+              radial-gradient(circle at 90% 80%, #fff1f2 0%, transparent 18%),
+              linear-gradient(135deg,var(--bg1),var(--bg2));
+  display:flex;align-items:center;justify-content:center;padding:40px;
+}
+.card{
+  width:100%;max-width:760px;background:var(--card);padding:36px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.12);text-align:center;
+  backdrop-filter: blur(6px);
+}
+
+/* decorative hearts inside the card */
+.card{position:relative;overflow:visible}
+.card > *{position:relative;z-index:1}
+.decor-hearts{position:absolute;inset:0;pointer-events:none;z-index:0}
+/* decorative hearts reuse the .heart base so they match the button glyphs */
+.decor-hearts .heart{position:absolute;font-size:28px;opacity:0.98;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.10));transform-origin:center;transition:transform .3s}
+.dh1{top:12px;left:18px;color:#ff7b00;font-size:34px;animation:float1 6s ease-in-out infinite}
+.dh2{top:8px;right:30px;color:#ffd400;font-size:30px;animation:float2 5.5s ease-in-out infinite}
+.dh3{bottom:20px;left:28px;color:#9b1b3a;font-size:38px;animation:float3 6.5s ease-in-out infinite}
+.dh4{bottom:16px;right:26px;color:#8a2be2;font-size:26px;animation:float4 5.8s ease-in-out infinite}
+.dh5{top:44%;left:50%;transform:translate(-50%,-50%);color:#00b4d8;font-size:32px;animation:float5 6.2s ease-in-out infinite}
+
+@keyframes float1{0%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(-6deg)}100%{transform:translateY(0)}}
+@keyframes float2{0%{transform:translateY(0)}50%{transform:translateY(-6px) rotate(4deg)}100%{transform:translateY(0)}}
+@keyframes float3{0%{transform:translateY(0)}50%{transform:translateY(-10px) rotate(3deg)}100%{transform:translateY(0)}}
+@keyframes float4{0%{transform:translateY(0)}50%{transform:translateY(-5px) rotate(-3deg)}100%{transform:translateY(0)}}
+@keyframes float5{0%{transform:translateY(0)}50%{transform:translateY(-7px) rotate(2deg)}100%{transform:translateY(0)}}
+
+/* button hearts use vibrant colors distinct from each other and background */
+.heart.h1{color:#FFD700;transform:rotate(-6deg) scale(1)}
+.heart.h2{color:#FF1493;transform:rotate(6deg) scale(0.95)}
+.heart.h3{color:#00CED1;transform:rotate(-2deg) scale(0.92)}
+.headline{
+  font-size:3rem;margin:0 0 12px;font-weight:800;line-height:1;letter-spacing:-1px;
+  background: conic-gradient(from 120deg,#d00000,#ff2d55,#ff7b92,#fff5f7,#d00000);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation: shimmer 6s linear infinite;
+}
+.headline.small{font-size:1.4rem}
+.sub{margin:0 0 20px;color:#7b0f1a;font-weight:600}
+.cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;color:white;padding:12px 20px;border-radius:10px;font-size:1rem;cursor:pointer;box-shadow:0 6px 20px rgba(208,0,0,0.32)}
+.cta:hover{transform:translateY(-3px);transition:transform .18s}
+.cta:focus{outline:3px solid rgba(208,0,0,0.12);outline-offset:3px}
+.cta{position:relative;display:inline-flex;align-items:center;gap:10px}
+.hearts{display:inline-flex;align-items:center;margin-left:6px}
+.heart{display:inline-block;font-size:1.05rem;line-height:1;transform-origin:center;transition:transform .18s}
+.heart.h1{color:#FFD700;transform:rotate(-6deg) scale(1)}
+.heart.h2{color:#FF1493;transform:rotate(6deg) scale(0.95)}
+.heart.h3{color:#00CED1;transform:rotate(-2deg) scale(0.92)}
+.cta.active .heart.h1{animation:pop1 .6s cubic-bezier(.2,.9,.2,1)}
+.cta.active .heart.h2{animation:pop2 .64s cubic-bezier(.2,.9,.2,1)}
+.cta.active .heart.h3{animation:pop3 .68s cubic-bezier(.2,.9,.2,1)}
+@keyframes pop1{0%{transform:scale(1) rotate(-6deg)}40%{transform:scale(1.5) rotate(-6deg)}60%{transform:scale(1.2) rotate(-6deg)}100%{transform:scale(1) rotate(-6deg)}}
+@keyframes pop2{0%{transform:scale(0.95) rotate(6deg)}45%{transform:scale(1.6) rotate(6deg)}65%{transform:scale(1.15) rotate(6deg)}100%{transform:scale(0.95) rotate(6deg)}}
+@keyframes pop3{0%{transform:scale(0.92) rotate(-2deg)}50%{transform:scale(1.4) rotate(-2deg)}70%{transform:scale(1.05) rotate(-2deg)}100%{transform:scale(0.92) rotate(-2deg)}}
+.cta-link{display:inline-block;margin-top:18px;padding:10px 18px;background:#fff;border-radius:10px;text-decoration:none;color:var(--accent1);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.content{color:#4b0f10;line-height:1.6}
+@keyframes shimmer{0%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(40deg)}100%{filter:hue-rotate(0deg)}}
+@media (max-width:520px){.headline{font-size:2rem}.card{padding:24px}}
+
+/* Small inline rose image */
+.inline-rose {
+  width: 16px;
+  height: auto;
+  vertical-align: middle;
+  margin-left: 6px;
+}
